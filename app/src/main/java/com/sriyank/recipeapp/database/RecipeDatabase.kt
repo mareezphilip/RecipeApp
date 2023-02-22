@@ -4,13 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.sriyank.recipeapp.dao.RecipeDao
-import com.sriyank.recipeapp.entities.Category
-import com.sriyank.recipeapp.entities.Categoryitems
-import com.sriyank.recipeapp.entities.Recipies
+import com.sriyank.recipeapp.entities.*
 import com.sriyank.recipeapp.entities.converter.CategoryListConverter
+import com.sriyank.recipeapp.entities.converter.MealListConverter
 
-@Database(entities = [Recipies::class , Categoryitems::class , Category::class , CategoryListConverter::class] , version =1 , exportSchema = false )
+@Database(entities = [Recipies::class , Categoryitems::class , Category::class , Meal::class , MealsItems::class] , version =1 , exportSchema = false )
+@TypeConverters(CategoryListConverter::class, MealListConverter::class)
 abstract class RecipeDatabase :RoomDatabase(){
 
     companion object{

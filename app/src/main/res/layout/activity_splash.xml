@@ -10,8 +10,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/bg" />
-
+        app:srcCompat="@drawable/bg_splash" />
 
 
     <FrameLayout
@@ -19,8 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="71dp"
-        android:layout_marginBottom="380dp"
+        android:layout_marginStart="-17dp"
+        android:layout_marginBottom="70dp"
         android:gravity="center">
 
         <Button
@@ -34,7 +33,7 @@
             android:paddingEnd="@dimen/_20sdp"
             android:text="Get Started"
             android:textColor="@color/white"
-            android:visibility= "invisible" />
+            android:visibility="invisible" />
 
         <ProgressBar
             android:id="@+id/loader"
@@ -47,8 +46,6 @@
 
 
     </FrameLayout>
-
-
 
 
 </RelativeLayout>
