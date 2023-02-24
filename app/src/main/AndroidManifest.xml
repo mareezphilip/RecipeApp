@@ -31,6 +31,13 @@
             android:screenOrientation="locked">
 
         </activity>
+
+        <activity
+            android:name=".DetailActivity"
+            android:exported="true"
+            android:screenOrientation="locked">
+
+        </activity>
     </application>
 
 </manifest>

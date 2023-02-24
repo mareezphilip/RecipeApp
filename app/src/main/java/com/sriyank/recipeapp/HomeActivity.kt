@@ -1,5 +1,6 @@
 package com.sriyank.recipeapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,29 +25,27 @@ class HomeActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-       /* arrmaincategory.add(Recipies(1 ,"beef" ))
+        /* arrmaincategory.add(Recipies(1 ,"beef" ))
         arrmaincategory.add(Recipies(2 ,"chicken" ))
         arrmaincategory.add(Recipies(3 ,"Dessert" ))
         arrmaincategory.add(Recipies(4 ,"Lamb" ))
 
         mainCategoryAdapter.setData(arrmaincategory)
 */
-
-        getDataFromDb()
-
-        mainCategoryAdapter.setClickListener(onClicked)
-       /* arrsubcategory.add(Recipies(1 ,"beef and mustard pie" ))
+        /* arrsubcategory.add(Recipies(1 ,"beef and mustard pie" ))
         arrsubcategory.add(Recipies(2 ,"chicken and mushroom" ))
         arrsubcategory.add(Recipies(3 ,"Banana pancakes" ))
         arrsubcategory.add(Recipies(4 ,"kapsalon" ))
 
         subCategoryAdapter.setData(arrsubcategory)
 */
+        //   rv_sub_category.layoutManager = LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false)
+        //   rv_sub_category.adapter = subCategoryAdapter
+        getDataFromDb()
 
+        mainCategoryAdapter.setClickListener(onClicked)
+        subCategoryAdapter.setClickListener(onClickedsub)
 
-
-     //   rv_sub_category.layoutManager = LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false)
-     //   rv_sub_category.adapter = subCategoryAdapter
     }
 
     private val onClicked = object :MainCategoryAdapter.OnItemClickListener{
@@ -55,6 +54,13 @@ class HomeActivity : BaseActivity() {
         }
     }
 
+    private val onClickedsub = object :SubCategoryAdapter.OnItemClickListener{
+        override fun onClicked(id: String) {
+            var intent = Intent(this@HomeActivity, DetailActivity::class.java)
+            intent.putExtra("id" , id)
+            startActivity(intent)
+        }
+    }
 
     private fun getDataFromDb(){
         launch {

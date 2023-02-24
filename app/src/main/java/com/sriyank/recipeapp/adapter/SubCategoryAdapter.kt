@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.item_rv_main_category.view.*
 
 class SubCategoryAdapter:RecyclerView.Adapter<SubCategoryAdapter.RecycleViewHolder>() {
 
+    var listener: SubCategoryAdapter.OnItemClickListener? = null
     var ctx : Context?=null
     var arrsubcategory = ArrayList<MealsItems>()
     class RecycleViewHolder(view:View):RecyclerView.ViewHolder(view){
@@ -29,12 +30,24 @@ class SubCategoryAdapter:RecyclerView.Adapter<SubCategoryAdapter.RecycleViewHold
     }
 
     override fun onBindViewHolder(holder: RecycleViewHolder, position: Int) {
-      holder.itemView.tv_dish_name.text= arrsubcategory[position].strMeal
+        holder.itemView.tv_dish_name.text= arrsubcategory[position].strMeal
         Glide.with(ctx!!).load(arrsubcategory[position].strMealThumb).into(holder.itemView.img_dish)
+
+        holder.itemView.rootView.setOnClickListener{
+            listener!!.onClicked(arrsubcategory[position].idMeal)
+        }
+
+    }
+
+    fun setClickListener(listener1 : SubCategoryAdapter.OnItemClickListener){
+        listener = listener1
     }
 
     override fun getItemCount(): Int {
          return arrsubcategory.size
     }
 
+    interface OnItemClickListener{
+        fun onClicked(id: String)
+    }
 }
